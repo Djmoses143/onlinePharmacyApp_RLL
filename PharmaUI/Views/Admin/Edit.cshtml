@@ -1,0 +1,74 @@
+﻿@model onlinePharmacyApp.ETClasses.Medicine
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="container">
+            <div class="card appointment-form">
+                <div class="card-body">
+                    <h4 class="card-title">Edit Medicine</h4>
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.MedicineId)
+
+                    <div class="form-group">
+                        <p>Medicine Name</p>
+                        
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Category</p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MType, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Price</p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Stock</p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <h5></h5>
+                    
+                        <div>
+                            <input type="submit" value="Save" class="btn btn-success" />
+                       
+                    </div>
+                    <br />
+                    <div class="btn btn-primary">
+
+                        @Html.ActionLink("Back", "MedicineList", "Admin")
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

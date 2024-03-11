@@ -1,0 +1,77 @@
+﻿@model onlinePharmacyApp.ETClasses.Customer
+
+@{
+    ViewBag.Title = "CustomerDelete";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<div class="form-horizontal">
+    <div class="container">
+        <div class="card appointment-form">
+            <div class="card-body">
+                <h2>CustomerDelete</h2>
+
+                <h3>Are you sure you want to delete this?</h3>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal" style="background-color:skyblue">
+                        <dt>
+                            Name
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
+                            Phone No.
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Phone)
+                        </dd>
+
+                        <dt>
+                            Address
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Address)
+                        </dd>
+
+                        <dt>
+                            Email
+                        </dt>
+
+                        <dd >
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            Password
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Password)
+                        </dd>
+
+                        
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /><br />
+                </div>
+                <br />
+                    <div class="btn btn-primary">
+                        @Html.ActionLink("Back", "CustomerList", "Admin")
+                    </div>
+              
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

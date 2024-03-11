@@ -1,0 +1,88 @@
+﻿@model IEnumerable<onlinePharmacyApp.ETClasses.Customer>
+
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+@*<div class="form-horizontal">
+    <div class="container">
+         <div class="card appointment-form">
+        <div class="card-body">*@
+@*<h2>CustomerList</h2>*@
+<style>
+   /* td {
+        background-color: lightskyblue
+    }*/
+</style>
+.<div class="form-horizontal">
+    <div class="container">
+        <div class="card appointment-form">
+            <div class="card-body">
+                <h4 class="card-title"> Customer List</h4>
+
+                <table class="table">
+                    <tr style="background-color: aliceblue ">
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Phone No.
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Password
+                        </th>
+                        <th>
+                            Email
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr style="background-color: lightskyblue ">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                                <td >
+                                 @Html.DisplayFor(modelItem => item.Email)
+                                
+
+                                </td>
+                            
+                
+
+                <td class="btn btn-success">
+                    @Html.ActionLink("CustomerUpdate", "CustomerUpdate", new { id = item.CustomerId })
+                   
+                </td>
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                <td class="btn btn-danger">
+                    @Html.ActionLink("CustomerDelete", "CustomerDelete", new { id = item.CustomerId })
+                </td>
+                </tr>
+            }
+
+                    </table>
+                    <div class="btn btn-primary">
+                        @Html.ActionLink("Back", "MedicineList", "Admin")
+                    </div>
+
+                </div>
+                    </div>
+                    </div>
+                        </div>

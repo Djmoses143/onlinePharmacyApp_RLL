@@ -1,0 +1,44 @@
+﻿@model IEnumerable<onlinePharmacyApp.ETClasses.Cart>
+
+@{
+    ViewBag.Title = "OrderPage";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="form-horizontal">
+    <div class="container">
+        <div class="card appointment-form">
+            <div class="card-body" id="tdetail">
+                <h2>Order Placed Successfully.. </h2>
+
+                <h4 class="card-title"> Order Details</h4>
+                <div class="form-group">
+                    @foreach (var item in Model)
+                    {
+                        <hr />
+                        <p>
+                            Medcine Name :@item.Mname
+                        </p>
+                        <p>
+                            Medicine Quantity :@item.Quantity
+                        </p>
+                        <p>
+                            Medicine Cost :@item.itemTotal
+                        </p>
+                        <hr />
+                    }
+                    <h1> Total Cost:@ViewBag.TotalAmount</h1>
+                    <div class="col-md-10">
+                        @Html.ActionLink("View Orders", "MyOrders", "Order",new {@class="btn btn-danger"})
+                    </div>
+                </div>
+                <div>
+                    <button id="generatePDF">Click Here to download the report</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<onlinePharmacyApp.ETClasses.Orders>
+
+@{
+    ViewBag.Title = "MyOrders";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="form-horizontal">
+    <div class="container">
+        <div class="card appointment-form" style="background-color:lightgrey" />
+        <div class="card-body">
+            <h2>MyOrders</h2>
+
+            @if (ViewBag.visibleCart)
+            {
+                <table class="table">
+                    <tr style="background-color:darkgrey">
+                        <th>
+                            OrderId
+                        </th>
+                        <th>
+                            OrderDate
+                        </th>
+                        <th>
+                            TotalPrice
+                        </th>
+                        <th>
+                            OrderStatus
+                        </th>
+                        <th></th><th></th><th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrderStatus)
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("CancelOrder", "Order", FormMethod.Post))
+                                {
+                                    <button class="btn btn-danger" type="submit" name="id" value=@item.OrderId>Cancel</button>
+                                }
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <center>
+                    <br />
+                    <h1>NO Orders</h1>
+                    <br />
+                    <h2>
+                        <a href="@Url.Action("MedicineList", "Customer")" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Add More</a>
+                    </h2>
+                </center>
+            }
+        </div>
+    </div>
+</div>
+</div>

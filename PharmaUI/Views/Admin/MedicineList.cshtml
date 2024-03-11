@@ -1,0 +1,61 @@
+﻿@model IEnumerable<onlinePharmacyApp.ETClasses.Medicine>
+
+@{
+    ViewBag.Title = "MedicineList";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="form-horizontal" >
+    <div class="container">
+        <div class="card appointment-form">
+            <div class="card-body">
+                <h4 class="card-title"> Medicine List</h4>
+
+                
+                <table class="table">
+                    <tr style="background-color:lightskyblue">
+                        <th>
+                            Medicine Name
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Stock
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr style="background-color:aliceblue">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.stock)
+                            </td>
+                            <td class="btn btn-success">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MedicineId })
+
+                            </td>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <td class="btn btn-danger">
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MedicineId })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

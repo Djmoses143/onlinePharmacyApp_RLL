@@ -1,0 +1,90 @@
+﻿@model IEnumerable<onlinePharmacyApp.ETClasses.Cart>
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";}
+<h4>My Cart</h4>
+@if (ViewBag.visibleCart)
+{
+
+    <table class="table">
+        <tr style="background-color:darkgray">
+            <th>
+                <p>Medicine Name</p>
+            </th>
+            <th>
+                <p>Quantity</p>
+            </th>
+            <th>
+               <p>Price</p>
+            </th>
+            <th>
+                <p>Item Total</p>
+            </th>
+            <th></th><th></th><th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr style="background-color:lightgrey">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.itemTotal)
+                </td>
+                <td>
+                    @using (Html.BeginForm("AddQty", "Cart", FormMethod.Post))
+                    {
+                        <button class="btn btn-danger" type="submit" name="id" value=@item.CartId>+</button>
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("DecreaseQty", "Cart", FormMethod.Post))
+                    {
+                        <button class="btn btn-danger" type="submit" name="id" value=@item.CartId>-</button>
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("DeleteItem", "Cart", FormMethod.Post))
+                    {
+                        <button class="btn btn-danger" type="submit" name="id" value=@item.CartId>Remove</button>
+                    }
+                </td>
+            </tr>
+
+
+        }
+
+
+    </table>
+    <hr />
+    <h2>
+        <a href="@Url.Action("OrderCheckOut", "Order")" class="btn btn-primary">Check Out</a>
+    </h2>
+    <hr />
+}
+else
+{
+    <center>
+        <br />
+        <h1>NO Medicines in the Cart</h1>
+        <br />
+        <h2>
+            <a href="@Url.Action("MedicineList", "Customer")" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Add More</a>
+        </h2>
+    </center>
+
+}
+<div class="btn btn-default" style="background-color:red">
+
+    @Html.ActionLink("Back", "MedicineList", "Customer")
+
+</div>
+

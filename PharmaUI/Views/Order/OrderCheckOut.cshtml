@@ -1,0 +1,69 @@
+﻿@model IEnumerable<onlinePharmacyApp.ETClasses.Cart>
+@{
+    ViewBag.Title = "OrderCheckOut";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+
+<h1>Order CheckOut </h1>
+<div class="form-horizontal">
+    <div class="container">
+        <div class="card appointment-form" style="background-color:lightgrey" />
+        <div class="card-body">
+            <table class="table">
+                <tr style="background-color:darkgrey">
+                    <th>
+                        Medicine Name
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Item Total
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Medicine.MName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.itemTotal)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="col-md-offset-2 col-md-10">
+                <h1>Total : Rs @ViewBag.BefDis</h1>
+                <h1>Discount: Rs @ViewBag.Dis</h1>
+                <h1></h1>
+                <h1>Total Price after Discount :</h1>
+                <h1>Rs. @ViewBag.AfterDis</h1>
+                <br />
+                @using (Html.BeginForm("PlaceOrder", "Order", FormMethod.Post))
+                {
+                    <button class="btn btn-danger" type="submit">Place Order</button>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

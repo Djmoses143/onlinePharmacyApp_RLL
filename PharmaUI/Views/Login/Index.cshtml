@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h1> Online Pharmacy App</h1>
+<style>
+    a:hover {
+        background-color: yellowgreen;
+    }
+    .container a {
+        color:white;
+        text-decoration: none;
+    }
+    body {
+        background-image: url('../../images/homepage bg.jpg');
+        background-size: cover;
+    }
+</style>
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-light">
+    <div class="container" style="background-color:grey">
+        @Html.ActionLink("Pharmacy ", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+            <li>@Html.ActionLink("Admin", "AdminLogin", "Login")</li> &nbsp; &nbsp;&nbsp;&nbsp;
+            <li>@Html.ActionLink("Customer", "CustomerLogin", "Login")</li>
+        </ul>
+           
+        </div>
+    </div>
+</nav>
+
+
